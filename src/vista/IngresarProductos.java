@@ -159,15 +159,15 @@ public class IngresarProductos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonIngresarExistente;
-    private javax.swing.JButton botonIngresarNuevo;
-    private javax.swing.JButton botonRegresar;
-    private javax.swing.JTextField cajaCantidad;
-    private javax.swing.JTextField cajaCodigo;
-    private javax.swing.JTextField cajaCodigoExistente;
-    private javax.swing.JTextField cajaIdProveedor;
-    private javax.swing.JTextField cajaNombre;
-    private javax.swing.JTextField cajaPrecio;
+    public javax.swing.JButton botonIngresarExistente;
+    public javax.swing.JButton botonIngresarNuevo;
+    public javax.swing.JButton botonRegresar;
+    public javax.swing.JTextField cajaCantidad;
+    public javax.swing.JTextField cajaCodigo;
+    public javax.swing.JTextField cajaCodigoExistente;
+    public javax.swing.JTextField cajaIdProveedor;
+    public javax.swing.JTextField cajaNombre;
+    public javax.swing.JTextField cajaPrecio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -179,6 +179,6 @@ public class IngresarProductos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSpinner spinnerCantidad;
+    public javax.swing.JSpinner spinnerCantidad;
     // End of variables declaration//GEN-END:variables
 }

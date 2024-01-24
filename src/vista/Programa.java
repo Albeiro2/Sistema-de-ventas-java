@@ -61,7 +61,7 @@ public class Programa extends javax.swing.JFrame {
         jPanel1.add(botonIngresarProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, 170, -1));
 
         botonInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/inventario.png"))); // NOI18N
-        botonInventario.setText("Inventatio y modifiaciones");
+        botonInventario.setText("Inventatio y modificaciones");
         botonInventario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonInventario.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jPanel1.add(botonInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 330, 170, -1));
@@ -126,11 +126,11 @@ public class Programa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonCerrarSesion;
-    private javax.swing.JButton botonHistorial;
-    private javax.swing.JButton botonIngresarProductos;
-    private javax.swing.JButton botonInventario;
-    private javax.swing.JButton botonVender;
+    public javax.swing.JButton botonCerrarSesion;
+    public javax.swing.JButton botonHistorial;
+    public javax.swing.JButton botonIngresarProductos;
+    public javax.swing.JButton botonInventario;
+    public javax.swing.JButton botonVender;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

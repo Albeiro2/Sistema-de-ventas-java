@@ -250,24 +250,24 @@ public class Vender extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotonBorrarProducto;
-    private javax.swing.JButton botonAgregarProducto;
-    private javax.swing.JButton botonBuscar;
-    private javax.swing.JButton botonGenerarVenta;
-    private javax.swing.JButton botonNuevaVenta;
-    private javax.swing.JButton botonRegresar;
-    private javax.swing.JTextField cajaCantidad;
-    private javax.swing.JTextField cajaCodigo;
-    private javax.swing.JTextField cajaId;
-    private javax.swing.JTextField cajaNombre;
-    private javax.swing.JTextField cajaPrecio;
+    public javax.swing.JButton BotonBorrarProducto;
+    public javax.swing.JButton botonAgregarProducto;
+    public javax.swing.JButton botonBuscar;
+    public javax.swing.JButton botonGenerarVenta;
+    public javax.swing.JButton botonNuevaVenta;
+    public javax.swing.JButton botonRegresar;
+    public javax.swing.JTextField cajaCantidad;
+    public javax.swing.JTextField cajaCodigo;
+    public javax.swing.JTextField cajaId;
+    public javax.swing.JTextField cajaNombre;
+    public javax.swing.JTextField cajaPrecio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTable tablaProductos;
+    public javax.swing.JTextField jTextField5;
+    public javax.swing.JTable tablaProductos;
     // End of variables declaration//GEN-END:variables
 }
