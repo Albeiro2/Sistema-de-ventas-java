@@ -28,29 +28,86 @@ public class IngresarProductos extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         botonRegresar = new javax.swing.JButton();
+        cajaCodigoExistente = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        botonIngresarExistente = new javax.swing.JButton();
+        spinnerCantidad = new javax.swing.JSpinner();
+        cajaCodigo = new javax.swing.JTextField();
+        cajaNombre = new javax.swing.JTextField();
+        cajaPrecio = new javax.swing.JTextField();
+        cajaCantidad = new javax.swing.JTextField();
+        cajaIdProveedor = new javax.swing.JTextField();
+        botonIngresarNuevo = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         botonRegresar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         botonRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/atras.png"))); // NOI18N
         botonRegresar.setText("Regresar");
+        jPanel1.add(botonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 19, -1, -1));
+        jPanel1.add(cajaCodigoExistente, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 96, 169, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 262, 778, 10));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(botonRegresar)
-                .addContainerGap(659, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(botonRegresar)
-                .addContainerGap(479, Short.MAX_VALUE))
-        );
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel1.setText("Insertar productos existentes");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 36, 242, -1));
+
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel2.setText("Insertar nuevo producto");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 290, 201, -1));
+
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel3.setText("Codigo:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 95, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel4.setText("Cantidad:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 150, -1, -1));
+
+        botonIngresarExistente.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        botonIngresarExistente.setText("Ingresar producto");
+        jPanel1.add(botonIngresarExistente, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 220, -1, -1));
+        jPanel1.add(spinnerCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(317, 150, 73, -1));
+        jPanel1.add(cajaCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(246, 365, 164, -1));
+        jPanel1.add(cajaNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 365, 220, -1));
+        jPanel1.add(cajaPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(444, 365, 124, -1));
+        jPanel1.add(cajaCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(606, 365, 95, -1));
+        jPanel1.add(cajaIdProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(728, 365, 71, -1));
+
+        botonIngresarNuevo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        botonIngresarNuevo.setText("Ingresar producto");
+        jPanel1.add(botonIngresarNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 427, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel5.setText("Nombre producto");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 121, -1));
+
+        jLabel6.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel6.setText("Codigo");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 331, 74, -1));
+
+        jLabel7.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel7.setText("Precio");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(469, 331, 80, -1));
+
+        jLabel8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel8.setText("Cantidad");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(607, 330, 90, -1));
+
+        jLabel9.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel9.setText("idProveedor");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 330, 80, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -102,7 +159,26 @@ public class IngresarProductos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonIngresarExistente;
+    private javax.swing.JButton botonIngresarNuevo;
     private javax.swing.JButton botonRegresar;
+    private javax.swing.JTextField cajaCantidad;
+    private javax.swing.JTextField cajaCodigo;
+    private javax.swing.JTextField cajaCodigoExistente;
+    private javax.swing.JTextField cajaIdProveedor;
+    private javax.swing.JTextField cajaNombre;
+    private javax.swing.JTextField cajaPrecio;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSpinner spinnerCantidad;
     // End of variables declaration//GEN-END:variables
 }
