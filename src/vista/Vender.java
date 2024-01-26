@@ -35,7 +35,7 @@ public class Vender extends javax.swing.JFrame {
         cajaNombre = new javax.swing.JTextField();
         cajaPrecio = new javax.swing.JTextField();
         cajaCantidad = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        cajaBuscar = new javax.swing.JTextField();
         botonBuscar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -127,7 +127,7 @@ public class Vender extends javax.swing.JFrame {
                                     .addComponent(cajaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGap(87, 87, 87)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(cajaBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(63, 63, 63)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -173,7 +173,7 @@ public class Vender extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonRegresar)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cajaBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonBuscar)
                     .addComponent(botonAgregarProducto))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
@@ -256,6 +256,7 @@ public class Vender extends javax.swing.JFrame {
     public javax.swing.JButton botonGenerarVenta;
     public javax.swing.JButton botonNuevaVenta;
     public javax.swing.JButton botonRegresar;
+    public javax.swing.JTextField cajaBuscar;
     public javax.swing.JTextField cajaCantidad;
     public javax.swing.JTextField cajaCodigo;
     public javax.swing.JTextField cajaId;
@@ -267,7 +268,6 @@ public class Vender extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTextField jTextField5;
     public javax.swing.JTable tablaProductos;
     // End of variables declaration//GEN-END:variables
 }

@@ -57,7 +57,7 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
-                                      <Component id="jTextField5" min="-2" pref="150" max="-2" attributes="0"/>
+                                      <Component id="cajaBuscar" min="-2" pref="150" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -121,7 +121,7 @@
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="botonRegresar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cajaBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="botonBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="botonAgregarProducto" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -225,7 +225,7 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField5">
+        <Component class="javax.swing.JTextField" name="cajaBuscar">
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>

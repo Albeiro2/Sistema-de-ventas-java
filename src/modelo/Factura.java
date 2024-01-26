@@ -9,7 +9,7 @@ public class Factura {
     
     private int idFactura;
     private String productos;
-    private Date fecha;
+    private String fecha;
     private BigDecimal total;
 
     public int getIdFactura() {
@@ -36,13 +36,15 @@ public class Factura {
         this.total = total;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
+
+    
     
     
     

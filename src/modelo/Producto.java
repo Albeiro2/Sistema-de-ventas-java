@@ -9,7 +9,7 @@ public class Producto {
     private String nombre;
     private String codigo;
     private BigDecimal precio;
-    private int cantidad;
+    private int cantidad = -1;
     private int idProveedor;
 
     public int getIdProducto() {
