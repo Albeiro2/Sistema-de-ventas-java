@@ -32,8 +32,9 @@ public class HistorialVentas extends javax.swing.JFrame {
         tablaHistorial = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         areaResumenVenta = new javax.swing.JTextArea();
-        botonBuscarVenta = new javax.swing.JButton();
+        botonCargarVentas = new javax.swing.JButton();
         cajaBuscarVenta = new javax.swing.JTextField();
+        botonRefrescar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,29 +74,35 @@ public class HistorialVentas extends javax.swing.JFrame {
         areaResumenVenta.setRows(5);
         jScrollPane2.setViewportView(areaResumenVenta);
 
-        botonBuscarVenta.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        botonBuscarVenta.setText("Buscar venta");
+        botonCargarVentas.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        botonCargarVentas.setText("Cargar ventas");
+
+        botonRefrescar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        botonRefrescar.setText("Refrescar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(botonRegresar)
+                .addGap(72, 72, 72)
+                .addComponent(cajaBuscarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
+                .addComponent(botonCargarVentas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(botonRefrescar)
+                .addGap(52, 52, 52))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(botonRegresar)
-                        .addGap(72, 72, 72)
-                        .addComponent(cajaBuscarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)
-                        .addComponent(botonBuscarVenta))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(78, 78, 78)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 621, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(209, 209, 209)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,8 +111,9 @@ public class HistorialVentas extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(botonBuscarVenta)
-                            .addComponent(cajaBuscarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(botonCargarVentas)
+                            .addComponent(cajaBuscarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonRefrescar)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(botonRegresar)))
@@ -113,7 +121,7 @@ public class HistorialVentas extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -124,7 +132,7 @@ public class HistorialVentas extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -167,7 +175,8 @@ public class HistorialVentas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTextArea areaResumenVenta;
-    public javax.swing.JButton botonBuscarVenta;
+    public javax.swing.JButton botonCargarVentas;
+    public javax.swing.JButton botonRefrescar;
     public javax.swing.JButton botonRegresar;
     public javax.swing.JTextField cajaBuscarVenta;
     private javax.swing.JPanel jPanel1;

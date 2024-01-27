@@ -1,14 +1,15 @@
 
 package modelo;
 
-import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.table.DefaultTableModel;
 
 public class SQLOperador extends Conexion {
     
@@ -63,6 +64,11 @@ public class SQLOperador extends Conexion {
         } catch (Exception e){
             System.err.println("Error, "+e);
             return false;
+        }finally{
+            try {
+                rs.close();
+            } catch (Exception e) {
+            }
         }
     }
     
@@ -98,6 +104,43 @@ public class SQLOperador extends Conexion {
         } catch (Exception e) {
             System.err.println("Error, "+e);
             return false;
+        }
+    }
+    
+    public ArrayList<Factura> cargarVentas(String campo){
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        ArrayList<Factura> facturas = new ArrayList<>();
+        
+        try {
+            Connection conexion = getConnection();
+            ps = conexion.prepareStatement("select * from factura "+campo);
+            rs = ps.executeQuery();
+            
+            while(rs.next()){
+               Factura factura = new Factura();
+                
+               factura.setIdFactura(rs.getInt(1)); 
+               factura.setProductos(rs.getString(2));
+               java.sql.Date fechaSQL = rs.getDate(3);
+               SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+               factura.setFecha(dateFormat.format(fechaSQL));
+               factura.setTotal(rs.getBigDecimal(4));
+                
+               facturas.add(factura);
+            }
+            return facturas;
+            
+        } catch (Exception e) {
+            System.err.println("Error, "+e);
+            
+            return null;
+        } finally{
+            try {
+                rs.close();
+            } catch (Exception e) {
+            }
         }
     }
 }
