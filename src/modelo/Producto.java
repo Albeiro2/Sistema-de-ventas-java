@@ -11,6 +11,7 @@ public class Producto {
     private BigDecimal precio;
     private int cantidad = -1;
     private int idProveedor;
+    private String proveedor;
 
     public int getIdProducto() {
         return idProducto;
@@ -58,6 +59,14 @@ public class Producto {
 
     public void setIdProveedor(int idProveedor) {
         this.idProveedor = idProveedor;
+    }
+
+    public String getProveedor() {
+        return proveedor;
+    }
+
+    public void setProveedor(String proveedor) {
+        this.proveedor = proveedor;
     }
     
     

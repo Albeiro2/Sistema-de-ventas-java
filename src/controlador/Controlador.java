@@ -72,6 +72,12 @@ public class Controlador implements ActionListener,MouseListener{
         historialVentas.botonCargarVentas.addActionListener(this);
         historialVentas.botonRefrescar.addActionListener(this);
         historialVentas.tablaHistorial.addMouseListener(this);
+        inventario.botonBuscar.addActionListener(this);
+        inventario.botonEliminar.addActionListener(this);
+        inventario.botonModificar.addActionListener(this);
+        inventario.botonRefrescar.addActionListener(this);
+        inventario.tablaInventario.addMouseListener(this);
+        
         
         
     }
@@ -80,6 +86,10 @@ public class Controlador implements ActionListener,MouseListener{
     public void mouseClicked(MouseEvent e) {
         if(e.getSource() == historialVentas.tablaHistorial){
             resumenVenta();
+        }
+        
+        if(e.getSource() == inventario.tablaInventario){
+            llenarCajasInventario();
         }
     }
 
@@ -134,6 +144,7 @@ public class Controlador implements ActionListener,MouseListener{
         if (e.getSource() == programa.botonInventario) {
             programa.setVisible(false);
             inventario.setVisible(true);
+            cargarInventario();
         }
 
         if (e.getSource() == programa.botonVender) {
@@ -196,6 +207,36 @@ public class Controlador implements ActionListener,MouseListener{
             historialVentas.areaResumenVenta.setText(null);
             cargarHistorialDeVentas();
         }
+        
+        if(e.getSource() == inventario.botonBuscar){
+            if(inventario.cajaBuscar.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Campo de busqueda vacio");
+            }
+            cargarInventario();
+        }
+        
+        if(e.getSource() == inventario.botonRefrescar){
+            vaciarCajasInventario();
+            cargarInventario();
+        }
+        
+        if(e.getSource() == inventario.botonEliminar){
+            if(!inventario.cajaCodigo.getText().equals("")){
+                if(operar.eliminarProducto(inventario.cajaCodigo.getText())){
+                    JOptionPane.showMessageDialog(null, "Producto Eliminado correctamente");
+                    vaciarCajasInventario();
+                    cargarInventario();
+                }
+            }
+        }
+        
+        if(e.getSource() == inventario.botonModificar){
+            if(inventario.cajaNombre.getText().equals("") || inventario.cajaCodigo.getText().equals("") ||inventario.cajaPrecio.getText().equals("") || inventario.cajaCantidad.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Rellene todos los campos para modificar el producto");
+            }else{
+               modificarProducto();
+            }
+        }
 
     }
 
@@ -214,11 +255,11 @@ public class Controlador implements ActionListener,MouseListener{
         ingresarProductos.setLocationRelativeTo(null);
         inventario.setTitle("Inventario");
         inventario.setLocationRelativeTo(null);
+        inventario.setSize(802, 600);
         vender.setTitle("Nueva venta");
         vender.setLocationRelativeTo(null);
         vender.setSize(820, 600);
         ingresarProductos.setSize(850, 500);
-        inventario.setSize(802, 600);
         modeloTablaVenderLlenarColumnas();
     }
 
@@ -361,6 +402,40 @@ public class Controlador implements ActionListener,MouseListener{
         }
     }
     
+    private void cargarInventario(){
+        DefaultTableModel modeloInventario = new DefaultTableModel();
+        inventario.tablaInventario.setModel(modeloInventario);
+        
+        String campo = inventario.cajaBuscar.getText();
+        String where="";
+        
+        if (!"".equals(campo)) { // Si el campo no esta vacio
+            where = "where codigo =" + campo + "";
+        }
+        
+        modeloInventario.addColumn("Producto");
+        modeloInventario.addColumn("Codigo");
+        modeloInventario.addColumn("Precio");
+        modeloInventario.addColumn("Cantidad");
+        modeloInventario.addColumn("Proveedor");
+        
+        if (operar.cargarInventario(where) != null) {
+            for (Producto producto : operar.cargarInventario(where)) {
+                Object[] fila = new Object[5];
+                fila[0] = producto.getNombre();
+                fila[1] = producto.getCodigo();
+                fila[2] = producto.getPrecio();
+                fila[3] = producto.getCantidad();
+                fila[4] = producto.getProveedor();
+                
+                modeloInventario.addRow(fila);
+            }
+
+        }else{
+            JOptionPane.showMessageDialog(null, "Produucto no existente");
+        }
+    }
+    
     
     private void resumenVenta(){
         String productos,fecha;
@@ -379,5 +454,46 @@ public class Controlador implements ActionListener,MouseListener{
         }
     }
 
+    private void llenarCajasInventario(){
+        int filaSeleccion = inventario.tablaInventario.getSelectedRow();
+        if(filaSeleccion != -1){
+            Object[] valores = new Object[4];
+            for(int i =0;i<4;i++){
+                valores[i] = inventario.tablaInventario.getValueAt(filaSeleccion, i);
+            }
+            
+            inventario.cajaNombre.setText(String.valueOf(valores[0]));
+            inventario.cajaCodigo.setText(String.valueOf(valores[1]));
+            inventario.cajaPrecio.setText(String.valueOf(valores[2]));
+            inventario.cajaCantidad.setText(String.valueOf(valores[3]));
+            inventario.cajaBuscar.setText(String.valueOf(valores[1]));
+        }
+    }
     
+    private void vaciarCajasInventario(){
+           inventario.cajaBuscar.setText(null);
+           inventario.cajaNombre.setText(null);
+            inventario.cajaCodigo.setText(null);
+            inventario.cajaPrecio.setText(null);
+            inventario.cajaCantidad.setText(null);
+    }
+    
+    private void modificarProducto(){
+        Producto producto  = new Producto();
+        BigDecimal big = new BigDecimal(inventario.cajaPrecio.getText());
+        int cantidad = Integer.parseInt(inventario.cajaCantidad.getText());
+        String codigoCaja = inventario.cajaBuscar.getText();
+        producto.setNombre(inventario.cajaNombre.getText());
+        producto.setCodigo(inventario.cajaCodigo.getText());
+        producto.setPrecio(big);
+        producto.setCantidad(cantidad);
+        
+        if(operar.modificarProducto(producto, codigoCaja)){
+            JOptionPane.showMessageDialog(null, "Producto modificado con exito");
+            vaciarCajasInventario();
+            cargarInventario();
+        }else{
+          JOptionPane.showMessageDialog(null, "Error, dijite bien los valores a modificar");  
+        }
+    }
 }

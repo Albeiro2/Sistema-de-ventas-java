@@ -1,6 +1,7 @@
 
 package modelo;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,7 +10,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import javax.swing.table.DefaultTableModel;
 
 public class SQLOperador extends Conexion {
     
@@ -140,6 +140,94 @@ public class SQLOperador extends Conexion {
             try {
                 rs.close();
             } catch (Exception e) {
+            }
+        }
+    }
+    
+    public ArrayList<Producto> cargarInventario(String campo){
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        ArrayList<Producto> productos = new ArrayList<>();
+        
+        try {
+            Connection conexion = getConnection();
+            ps = conexion.prepareStatement("select p.nombre, p.codigo, p.precio, p.cantidad, pro.nombre as proveedor from producto as p inner join proveedor as pro on p.idProveedor = pro.id "+campo);
+            rs = ps.executeQuery();
+            
+            while(rs.next()){
+               Producto producto = new Producto();
+                
+              producto.setNombre(rs.getString(1));
+              producto.setCodigo(rs.getString(2));
+              producto.setPrecio(rs.getBigDecimal(3));
+              producto.setCantidad(rs.getInt(4));
+              producto.setProveedor(rs.getString(5));
+                
+               productos.add(producto);
+            }
+            return productos;
+            
+        } catch (Exception e) {
+            System.err.println("Error, "+e);
+            
+            return null;
+        } finally{
+            try {
+                rs.close();
+            } catch (Exception e) {
+            }
+        }
+    }
+    
+    public boolean eliminarProducto(String codigo){
+        PreparedStatement ps = null;
+        try {
+            
+            Connection conexion = getConnection();
+            ps = conexion.prepareStatement("delete from producto where codigo = ?");
+            ps.setString(1, codigo);
+            ps.executeUpdate();
+            
+            return true;
+            
+            
+        } catch (Exception e) {
+            System.err.println("Error, "+e);
+            return false;
+        }finally{
+            try {
+                ps.close();
+            } catch (Exception e) {
+                System.err.println("Error, "+e);
+            }
+        }
+        
+    }
+    
+    public boolean modificarProducto(Producto producto,String codigoCaja){
+        PreparedStatement ps = null;
+        
+        try {
+            Connection conexion = getConnection();
+            ps = conexion.prepareStatement("update producto set nombre = ?, codigo = ?, precio = ?, cantidad = ? where codigo = ?");
+            ps.setString(1,producto.getNombre());
+            ps.setString(2, producto.getCodigo());
+            ps.setBigDecimal(3, producto.getPrecio());
+            ps.setInt(4, producto.getCantidad());
+            ps.setString(5, codigoCaja);
+            ps.executeUpdate();
+            return true;
+            
+            
+        } catch (Exception e) {
+            System.err.println("Error, "+e);
+            return false;
+        }finally{
+            try {
+                ps.close();
+            } catch (Exception e) {
+                System.err.println("Error, "+e);
             }
         }
     }
