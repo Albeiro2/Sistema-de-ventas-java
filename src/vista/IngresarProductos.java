@@ -40,7 +40,7 @@ public class IngresarProductos extends javax.swing.JFrame {
         cajaNombre = new javax.swing.JTextField();
         cajaPrecio = new javax.swing.JTextField();
         cajaCantidad = new javax.swing.JTextField();
-        cajaIdProveedor = new javax.swing.JTextField();
+        cajaProveedor = new javax.swing.JTextField();
         botonIngresarNuevo = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -83,7 +83,7 @@ public class IngresarProductos extends javax.swing.JFrame {
         jPanel1.add(cajaNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 365, 220, -1));
         jPanel1.add(cajaPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(444, 365, 124, -1));
         jPanel1.add(cajaCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(606, 365, 95, -1));
-        jPanel1.add(cajaIdProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(728, 365, 71, -1));
+        jPanel1.add(cajaProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(728, 365, 110, -1));
 
         botonIngresarNuevo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         botonIngresarNuevo.setText("Ingresar producto");
@@ -106,14 +106,14 @@ public class IngresarProductos extends javax.swing.JFrame {
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(607, 330, 90, -1));
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel9.setText("idProveedor");
+        jLabel9.setText("Proveedor");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 330, 80, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 860, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,9 +165,9 @@ public class IngresarProductos extends javax.swing.JFrame {
     public javax.swing.JTextField cajaCantidad;
     public javax.swing.JTextField cajaCodigo;
     public javax.swing.JTextField cajaCodigoExistente;
-    public javax.swing.JTextField cajaIdProveedor;
     public javax.swing.JTextField cajaNombre;
     public javax.swing.JTextField cajaPrecio;
+    public javax.swing.JTextField cajaProveedor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

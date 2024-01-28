@@ -231,4 +231,99 @@ public class SQLOperador extends Conexion {
             }
         }
     }
+    
+    public boolean insertarProductoExistente(String codigo, int cantidad){
+        PreparedStatement ps = null;
+        
+        try {
+            Connection conexion = getConnection();
+            ps = conexion.prepareStatement("update producto set cantidad = cantidad + ? where codigo = ?");
+            ps.setInt(1, cantidad);
+            ps.setString(2, codigo);
+            ps.executeUpdate();
+            
+            return true;
+        } catch (Exception e) {
+            System.err.println("Error, "+e);
+            return false;
+        }finally{
+            try {
+                ps.close();
+            } catch (Exception e) {
+                System.err.println("Erro, "+e);
+            }
+        }
+    }
+    
+    public boolean verificarProducto(String codigo){
+       PreparedStatement ps = null;
+       ResultSet rs = null;
+        try {
+            Connection conexion  = getConnection();
+            ps = conexion.prepareStatement("select * from producto where codigo = ?");
+            ps.setString(1, codigo);
+            
+            rs = ps.executeQuery();
+            if(rs.next()){
+                return true;
+            }else{
+                return false;
+            }
+            
+        } catch (Exception e) {
+            System.err.println("Error, "+e);
+            return false;
+        }
+    }
+    
+    public boolean insertarProductoNuevo(Producto producto){
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        int idProveedor;
+        int resultadoFinal =0;
+        
+        try {
+            Connection conexion = getConnection();
+            ps = conexion.prepareStatement("insert into proveedor(nombre)values(?)");
+            ps.setString(1, producto.getProveedor());
+            
+            int resultado = ps.executeUpdate();
+            
+            if(resultado > 0){
+                ps = conexion.prepareStatement("select id from proveedor where nombre = ?");
+                ps.setString(1, producto.getProveedor());
+                rs = ps.executeQuery();
+                
+                if(rs.next()){
+                    idProveedor = rs.getInt(1);
+                    
+                    ps = conexion.prepareStatement("insert into producto(nombre,codigo,precio,cantidad,idProveedor)values(?,?,?,?,?)");
+                    ps.setString(1, producto.getNombre());
+                    ps.setString(2, producto.getCodigo());
+                    ps.setBigDecimal(3, producto.getPrecio());
+                    ps.setInt(4, producto.getCantidad());
+                    ps.setInt(5, idProveedor);
+                    
+                   resultadoFinal =  ps.executeUpdate();
+                }
+            }
+            if(resultadoFinal > 0){
+                return true;
+            }else{
+                return false;
+            }
+            
+            
+        } catch (Exception e) {
+            System.err.println("Error, "+e);
+            return false;
+        }finally{
+            try {
+                
+            } catch (Exception e) {
+                System.err.println("Error, "+e);
+                
+            }
+        }
+    }
 }

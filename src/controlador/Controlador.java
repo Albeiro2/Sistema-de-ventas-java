@@ -77,6 +77,8 @@ public class Controlador implements ActionListener,MouseListener{
         inventario.botonModificar.addActionListener(this);
         inventario.botonRefrescar.addActionListener(this);
         inventario.tablaInventario.addMouseListener(this);
+        ingresarProductos.botonIngresarExistente.addActionListener(this);
+        ingresarProductos.botonIngresarNuevo.addActionListener(this);
         
         
         
@@ -237,6 +239,14 @@ public class Controlador implements ActionListener,MouseListener{
                modificarProducto();
             }
         }
+        
+        if(e.getSource() == ingresarProductos.botonIngresarExistente){
+            insertarProductoExistente();
+        }
+        
+        if(e.getSource() == ingresarProductos.botonIngresarNuevo){
+            insertar_producto_nuevo();
+        }
 
     }
 
@@ -259,7 +269,7 @@ public class Controlador implements ActionListener,MouseListener{
         vender.setTitle("Nueva venta");
         vender.setLocationRelativeTo(null);
         vender.setSize(820, 600);
-        ingresarProductos.setSize(850, 500);
+        ingresarProductos.setSize(870, 500);
         modeloTablaVenderLlenarColumnas();
     }
 
@@ -494,6 +504,56 @@ public class Controlador implements ActionListener,MouseListener{
             cargarInventario();
         }else{
           JOptionPane.showMessageDialog(null, "Error, dijite bien los valores a modificar");  
+        }
+    }
+    
+    private void insertarProductoExistente(){
+        int cantidad = (int) ingresarProductos.spinnerCantidad.getValue();
+        String codigo = ingresarProductos.cajaCodigoExistente.getText();
+        if(ingresarProductos.cajaCodigoExistente.getText().equals("") || cantidad == 0 ){
+            JOptionPane.showMessageDialog(null, "Rellene los campos para ingresar producto");
+        }else{
+            if(operar.insertarProductoExistente(codigo, cantidad)){
+                if(operar.verificarProducto(codigo)){
+                    JOptionPane.showMessageDialog(null, "Producto agregado exitosamente");
+                    ingresarProductos.cajaCodigoExistente.setText(null);
+                    ingresarProductos.spinnerCantidad.setValue(0);
+                }else{
+                    JOptionPane.showMessageDialog(null, "Producto no existe");
+                }
+                
+            }
+                
+            
+        }
+    }
+    
+    private void insertar_producto_nuevo(){
+        if(ingresarProductos.cajaNombre.getText().equals("") || ingresarProductos.cajaPrecio.getText().equals("") || ingresarProductos.cajaCodigo.getText().equals("") || ingresarProductos.cajaCantidad.getText().equals("") || ingresarProductos.cajaProveedor.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Por favor, rellene todos los campos para ingresar el producto");
+        }else{
+            BigDecimal big = new BigDecimal(ingresarProductos.cajaPrecio.getText());
+            int cantidad = Integer.parseInt(ingresarProductos.cajaCantidad.getText());
+            
+            Producto producto = new Producto();
+            producto.setNombre(ingresarProductos.cajaNombre.getText());
+            producto.setCodigo(ingresarProductos.cajaCodigo.getText());
+            producto.setPrecio(big);
+            producto.setCantidad(cantidad);
+            producto.setProveedor(ingresarProductos.cajaProveedor.getText());
+            
+            if(operar.insertarProductoNuevo(producto)){
+                JOptionPane.showMessageDialog(null, "Producto ingresado exitosamente");
+                ingresarProductos.cajaCantidad.setText(null);
+                ingresarProductos.cajaProveedor.setText(null);
+                ingresarProductos.cajaPrecio.setText(null);
+                ingresarProductos.cajaNombre.setText(null);
+                ingresarProductos.cajaCodigo.setText(null);
+                
+                
+            }else{
+                JOptionPane.showMessageDialog(null, "Error al ingresar producto, verifique los datos del producto");
+            }
         }
     }
 }
