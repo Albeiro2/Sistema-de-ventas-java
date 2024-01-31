@@ -2,6 +2,7 @@
 package principal;
 
 import controlador.Controlador;
+import javax.swing.UIManager;
 import modelo.Factura;
 import modelo.Producto;
 import modelo.Proveedor;
@@ -18,6 +19,12 @@ import vista.VentanaFactura;
 public class Principal {
     
     public static void main(String[] args) {
+        
+        try {
+            UIManager.setLookAndFeel("com.jtattoo.plaf.bernstein.BernsteinLookAndFeel");
+        } catch (Exception e) {
+            
+        }
        
         Factura factura = new Factura();
         Producto producto = new Producto();

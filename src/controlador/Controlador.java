@@ -157,6 +157,7 @@ public class Controlador implements ActionListener,MouseListener{
         if (e.getSource() == historialVentas.botonRegresar) {
             historialVentas.dispose();
             programa.setVisible(true);
+            historialVentas.cajaBuscarVenta.setText(null);
         }
 
         if (e.getSource() == ingresarProductos.botonRegresar) {
@@ -167,6 +168,7 @@ public class Controlador implements ActionListener,MouseListener{
         if (e.getSource() == inventario.botonRegresar) {
             inventario.dispose();
             programa.setVisible(true);
+            inventario.cajaBuscar.setText(null);
         }
 
         if (e.getSource() == vender.botonRegresar) {

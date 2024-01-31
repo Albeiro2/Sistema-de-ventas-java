@@ -279,31 +279,34 @@ public class SQLOperador extends Conexion {
     public boolean insertarProductoNuevo(Producto producto){
         PreparedStatement ps = null;
         ResultSet rs = null;
-        int idProveedor;
+        int idProveedor = verificarProveedor(producto);
+        int id;
         int resultadoFinal =0;
-        
+         
         try {
-            Connection conexion = getConnection();
+           
+            if(idProveedor == -1){
+                 Connection conexion = getConnection();
             ps = conexion.prepareStatement("insert into proveedor(nombre)values(?)");
             ps.setString(1, producto.getProveedor());
-            
+
             int resultado = ps.executeUpdate();
-            
+
             if(resultado > 0){
                 ps = conexion.prepareStatement("select id from proveedor where nombre = ?");
                 ps.setString(1, producto.getProveedor());
                 rs = ps.executeQuery();
-                
+
                 if(rs.next()){
-                    idProveedor = rs.getInt(1);
-                    
+                    id = rs.getInt(1);
+
                     ps = conexion.prepareStatement("insert into producto(nombre,codigo,precio,cantidad,idProveedor)values(?,?,?,?,?)");
                     ps.setString(1, producto.getNombre());
                     ps.setString(2, producto.getCodigo());
                     ps.setBigDecimal(3, producto.getPrecio());
                     ps.setInt(4, producto.getCantidad());
-                    ps.setInt(5, idProveedor);
-                    
+                    ps.setInt(5, id);
+
                    resultadoFinal =  ps.executeUpdate();
                 }
             }
@@ -312,6 +315,23 @@ public class SQLOperador extends Conexion {
             }else{
                 return false;
             }
+            }else{
+                    Connection conexion = getConnection();
+                    ps = conexion.prepareStatement("insert into producto(nombre,codigo,precio,cantidad,idProveedor)values(?,?,?,?,?)");
+                    ps.setString(1, producto.getNombre());
+                    ps.setString(2, producto.getCodigo());
+                    ps.setBigDecimal(3, producto.getPrecio());
+                    ps.setInt(4, producto.getCantidad());
+                    ps.setInt(5, idProveedor);
+
+                   resultadoFinal =  ps.executeUpdate();
+            }
+            if(resultadoFinal > 0){
+                return true;
+            }else{
+                return false;
+            }
+            
             
             
         } catch (Exception e) {
@@ -325,5 +345,36 @@ public class SQLOperador extends Conexion {
                 
             }
         }
+    }
+    
+    private int verificarProveedor(Producto producto){  
+        
+        int id  = -1;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        try {
+            Connection conexion = getConnection();
+            ps = conexion.prepareStatement("select id from proveedor where nombre = ?");
+            ps.setString(1, producto.getProveedor());
+            rs = ps.executeQuery();
+            
+            if(rs.next()){
+                id = rs.getInt(1);
+            }
+            
+            return id;
+            
+        } catch (SQLException e) {
+            System.err.println("Error, "+e);
+            return id;
+        }finally{
+            try {
+                rs.close();
+            } catch (SQLException e) {
+                System.err.println("error, "+e);
+            }
+        }
+        
     }
 }
